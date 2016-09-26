@@ -274,6 +274,7 @@ public class AudioHandler extends CordovaPlugin {
             onLastPlayerReleased();
         }
         audio.destroy();
+        abandonAudioFocus();
         return true;
     }
 
@@ -352,7 +353,6 @@ public class AudioHandler extends CordovaPlugin {
         AudioPlayer audio = this.players.get(id);
         if (audio != null) {
             audio.stopPlaying();
-            abandonAudioFocus();
         }
     }
 
