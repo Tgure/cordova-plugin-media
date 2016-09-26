@@ -194,7 +194,8 @@
 
     if (!self.avSession) {
         NSError* error = nil;
-        self.avSession = [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryAmbient error:nil];
+
+        self.avSession = [AVAudioSession sharedInstance];
         if (error) {
             // is not fatal if can't get AVAudioSession , just log the error
             NSLog(@"error creating audio session: %@", [[error userInfo] description]);
@@ -347,7 +348,7 @@
                 }
 
                 NSString* sessionCategory = bPlayAudioWhenScreenIsLocked ? AVAudioSessionCategoryPlayback : AVAudioSessionCategorySoloAmbient;
-                [self.avSession setCategory:sessionCategory error:&err];
+                [self.avSession setCategory:AVAudioSessionCategoryAmbient error:&err];
                 if (![self.avSession setActive:YES error:&err]) {
                     // other audio with higher priority that does not allow mixing could cause this to fail
                     NSLog(@"Unable to play audio: %@", [err localizedFailureReason]);
