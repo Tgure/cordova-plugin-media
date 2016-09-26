@@ -423,7 +423,7 @@ public class AudioHandler extends CordovaPlugin {
             public void onAudioFocusChange(int focusChange) {
                 switch (focusChange) {
                 case (AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) :
-                    pauseAllLostFocus();
+                    AudioManager.abandonAudioFocus(null);
                     break;
                 case (AudioManager.AUDIOFOCUS_LOSS_TRANSIENT) :
                 case (AudioManager.AUDIOFOCUS_LOSS) :
