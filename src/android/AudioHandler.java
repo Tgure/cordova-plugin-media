@@ -441,7 +441,7 @@ public class AudioHandler extends CordovaPlugin {
 
     private void abandonAudioFocus() {
         AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
-        am.abandonAudioFocus();
+        int result = am.abandonAudioFocus(focusChangeListener);
     }
 
     public void getAudioFocus() {
