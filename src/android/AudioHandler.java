@@ -427,7 +427,7 @@ public class AudioHandler extends CordovaPlugin {
                 case (AudioManager.AUDIOFOCUS_LOSS) :
                     pauseAllLostFocus();
                     break;
-                case (AudioManager.AUDIOFOCUS_GAIN):
+                case (AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK):
                     resumeAllGainedFocus();
                     break;
                 default:
@@ -442,7 +442,7 @@ public class AudioHandler extends CordovaPlugin {
         AudioManager am = (AudioManager) this.cordova.getActivity().getSystemService(Context.AUDIO_SERVICE);
         int result = am.requestAudioFocus(focusChangeListener,
                                           AudioManager.STREAM_MUSIC,
-                                          AudioManager.AUDIOFOCUS_GAIN);
+                                          AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
 
         if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             LOG.e(TAG2,result + " instead of " + AudioManager.AUDIOFOCUS_REQUEST_GRANTED);
