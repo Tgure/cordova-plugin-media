@@ -639,7 +639,7 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
     private void loadAudioFile(String file) throws IllegalArgumentException, SecurityException, IllegalStateException, IOException {
         if (this.isStreaming(file)) {
             this.player.setDataSource(file);
-            this.player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            this.player.setAudioStreamType(AudioManager.STREAM_RING);
             //if it's a streaming file, play mode is implied
             this.setMode(MODE.PLAY);
             this.setState(STATE.MEDIA_STARTING);
